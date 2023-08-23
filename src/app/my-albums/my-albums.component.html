@@ -1,0 +1,60 @@
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: navy;
+    padding: 10px;
+  }
+
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+</style>
+
+<!--<ul class="grid-container" *ngFor ="let album of myData$ | async">
+  <li class="span4">
+    <div class="grid-item">
+      <img [src]="album.coverPhotoUrl" alt="Photo Not Available" style="width:250px; height: 250px"/>
+      <h3> {{ album.id }} </h3>
+      <p> {{album.name }}</p>
+      <p> {{album.createdBy }}</p>
+      <p> {{album.dateCreated }}</p>
+      <p>Thumbnail caption...</p>
+    </div>
+  </li>
+</ul>-->
+
+<div class="row">
+  <div class="card" style="width: 18rem;" *ngFor="let album of myData$ | async">
+    <img class="card-img-top" [src]="album.coverPhotoUrl" alt="Photo Not Available" [routerLink]="['/album', album.id, '/photo']" style="width:250px; height: 250px">
+    <div class="card-body">
+      <h5 class="card-title">{{album.name}}</h5>
+      <p class="card-text">{{ album.id }}</p>
+      <p class="card-text">{{album.createdBy }}</p>
+      <p class="card-text">{{album.createdBy }}</p>
+      <a [routerLink]="['/album', album.id]" class="btn btn-primary">Go to Album</a>
+    </div>
+  </div>
+</div>
+
+
+<!--<table class="table">
+  <thead>
+    <tr>
+      <th> ID </th>
+      <th> Date Created</th>
+    </tr>
+  </thead>
+  <tr  *ngFor ="let album of myData$ | async">
+    <td>
+      {{ album.id }}
+    </td>
+    <td>
+      {{ album.dateCreated }}
+    </td>
+  </tr>
+</table>-->

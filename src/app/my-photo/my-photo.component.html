@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="column">
+    <table class="table" style="width:100%">
+      <thead>
+        <tr>
+          <th scope="col">Photo Details</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr>
+        <td>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Date Created</th>
+              <th scope="col">CreatedBy</th>
+              <th scope="col">Photo</th>
+            </tr>
+          </thead>
+          <tr *ngFor="let photo of photos">
+            <td>{{photo.id}} </td>
+            <td>{{ photo.dateCreated }}</td>
+            <td>{{ photo.createdBy }}</td>
+            <td><img [src]="photo.photoUrl" alt="Photo Not Available" style="width:250px; height: 250px"></td>
+            <td><app-comment></app-comment></td>
+          </tr>
+      <tr>
+        <td>
+          Comment: <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Please write a comment" [(ngModel)]="message" (keyup.enter)="addComment()">Please write a comment</textarea>
+        </td>
+      </tr>
+      </td>
+      </tr>
+    </table>
+    <button type="submit" (click)="getAlbumById()"> View Details</button>
+  </div>
+  <div>
+    <form #photoForm="ngForm" (ngSubmit)="photoService.addPhoto(photoForm.value)">
+      AlbumId:      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="albumId" placeholder = {{albumId}} ngModel /> <br /><br />
+      Created By:   &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="createdBy" placeholder = {{album.email}} ngModel /> <br /><br />
+      Date Created: <input type="date" id="start" name="dateCreated" value="2018-07-22" min="2018-01-01" max="2050-12-31" ngModel /> <br /><br />
+      PhotoUrl:      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="photoUrl" ngModel /> <br /><br />
+      <button type="submit" onclick="window.location.href = '/photo';">Add Photo</button>
+    </form>
+  </div>
+</div>

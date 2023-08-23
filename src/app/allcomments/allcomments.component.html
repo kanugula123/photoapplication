@@ -1,0 +1,63 @@
+<button type="submit" (click)="getAllComments()">View Comments</button>
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .column {
+    display: -ms-flexbox; /* IE 10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE 10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+
+  /* Create two equal columns that sits next to each other */
+  .row {
+    -ms-flex: 50%; /* IE 10 */
+    flex: 50%;
+    padding: 0 4px;
+  }
+</style>
+
+<div class="row">
+  <div class="column">
+    <table class="table">
+      <tr>
+        <td>
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">CreatedBy</th>
+          <th scope="col">Date Created</th>
+          <th scope="col">Message</th>
+          <th scope="col">PhotoId</th>
+          <th scope="col"><button type="submit" (click)="sortComments(comments$)" style="width: 100px">Change order</button></th>
+        </tr>
+      </thead>
+      <tr *ngFor="let comment of comments$">
+        <td>{{ comment.id }} </td>
+        <td>{{ comment.createdBy }}</td>
+        <td>{{ comment.dateCreated }}</td>
+        <td>{{ comment.message }}</td>
+        <td>{{ comment.photoId }}</td>
+      </tr>
+      </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<br />
+
+

@@ -1,0 +1,59 @@
+<html >
+<body style="background-image: url(https://www.pcclean.io/wp-content/uploads/2020/4/qemYZb.jpg); height: 100%; background-position: center ; background-repeat: no-repeat; background-size: cover; ">
+  <!--<img src="https://www.pcclean.io/wp-content/uploads/2020/4/qemYZb.jpg" style="height: 100%; background-position: initial; background-repeat: no-repeat; background-size: contain;" />-->
+  <div style="width:800px; height:800px" *ngIf="signInFormVisible; else signUpForm">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sign-In</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" (click)="makeSignUpFormVisible()">Sign-Up</a>
+      </div>
+    </nav>
+
+    <form class="form-signin" style="text-align:center; width:350px; height: 350px;">
+      <img class="mb-4" src="https://cdn.dribbble.com/users/1381187/screenshots/4279559/sign_in.png" alt="" width="150" height="75">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password" required>
+      <label for="inputPhone" class="sr-only">Phone Number</label>
+      <input type="number" id="inputPassword" class="form-control" [(ngModel)]="phone" [ngModelOptions]="{standalone: true}" placeholder="Phone" required maxlength="20">
+      <label for="website" class="sr-only">WebSite</label>
+      <input type="url" id="url" class="form-control" [(ngModel)]="url" [ngModelOptions]="{standalone: true}" placeholder="WebSite" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" (click)="login()" type="submit">Sign in</button>
+      <!--<button class="btn btn-lg btn-primary btn-block" *ngIf="isLogIn" (click)="logout()">Logout</button>-->
+    </form>
+  </div>
+  <ng-template #signUpForm style="width: 800px; height: 800px">
+    <div >
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" (click)="makeSignInFormVisible()">Sign-In</a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Sign-Up</a>
+        </div>
+      </nav>
+      <form class="form-signin" style="text-align:center">
+        <img class="mb-4" src="https://cdn.dribbble.com/users/1381187/screenshots/4279559/sign_in.png" alt="" width="150" height="75">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="name" class="sr-only">Name</label>
+        <input type="text" id="inputName" class="form-control" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="Name" required>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password" required>
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" (click)="signUp()" type="submit">Sign Up</button>
+      </form>
+    </div>
+  </ng-template>
+</body>
+</html>

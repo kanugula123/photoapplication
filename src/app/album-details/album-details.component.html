@@ -1,0 +1,25 @@
+<button type="submit" (click)="getAlbumById()"> View Details</button>
+<br />
+<h5>Album Details </h5>
+
+<!--<p>{{albumId}}</p>-->
+<div>
+  <b>ID: </b><label>{{album.id}}</label> <br />
+  <b>Name: </b><label>{{album.name}}</label><br />
+  <b>CreatedBy: </b><label>{{album.email}}</label><br />
+  <b>Date Created: </b><label>{{album.dateCreated}}</label><br />
+  <b>Cover Photo URL: </b> <img [src]="album.coverPhotoUrl" alt="Photo Not Available" [routerLink]="['/myPhoto']" routerLinkActive="active" style="width:250px; height: 250px"> <br />
+  <!--<label>{{album.coverPhotoUrl}}</label><br />-->
+  <b>photos: </b>
+  <ul *ngFor ="let photo of photos">
+    <li>{{photo.id}}</li>
+  </ul>
+  <!--<label>{{album.photos}}</label><br />-->
+</div>
+<!--<app-my-photo [photos]='photos'></app-my-photo>-->
+<a [routerLink]="['/upload', albumId]" class="btn btn-primary">Upload Photo</a> <br />
+
+<a href="/photo" class="navbar-brand mb-0" [routerLink]="['/photo']" routerLinkActive="active" ariaCurrentWhenActive="page">All Photos</a>
+
+<a [routerLink]="['/myPhoto', albumId]" class="btn btn-primary">My-Photo</a>
+

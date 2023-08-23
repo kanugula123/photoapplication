@@ -1,0 +1,101 @@
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .column {
+    display: -ms-flexbox; /* IE 10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE 10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+
+  /* Create two equal columns that sits next to each other */
+  .row {
+    -ms-flex: 50%; /* IE 10 */
+    flex: 50%;
+    padding: 0 4px;
+  }
+</style>
+
+<div class="row">
+  <div class="column">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Photo Details</th>
+          <th scope="col">Add Photo</th>
+          <th></th>
+          <th></th>
+          <th scope="col">Update Photo</th>
+        </tr>
+      </thead>
+      <tr>
+      <td>
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">AlbumID</th>
+          <th scope="col">CreatedBy</th>
+          <th scope="col">Photo</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let photos of myData$ | async">
+        <td>{{ photos.id }} </td>
+        <td>{{ photos.albumId }}</td>
+        <td>{{ photos.createdBy }}</td>
+        <td><img [src]="photos.photoUrl" alt="Photo Not Available" style="width:250px; height: 250px"></td>
+        <td>
+          <!--<button type="submit" onclick="window.location.href = '/photo';" style="width: 100px;height: 100px">Delete Photo</button>-->
+          <button (click)="photoService.deletePhoto(photos.id)" style="width: 100px;height: 100px"><a href="/photo">Delete Photo</a></button>
+          <button (click)="albumService.setCoverPic(photos.albumId,photos.id)" href="/albums" style="width: 100px;height: 100px" type="submit">Set Cover Pic</button>
+        </td>
+      </tr>
+        </td>
+      <td>
+        <div class="form-area">
+          <h3> Add Photo </h3>
+          <form #photoForm="ngForm" (ngSubmit)="photoService.addPhoto(photoForm.value)">
+            AlbumId:      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="albumId" ngModel /> <br /><br />
+            Created By:   &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="createdBy" ngModel /> <br /><br />
+            Date Created: <input type="date" id="start" name="dateCreated" value="2018-07-22" min="2018-01-01" max="2050-12-31" ngModel /> <br /><br />
+            PhotoUrl:      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="photoUrl" ngModel /> <br /><br />
+            <button type="submit" onclick="window.location.href = '/photo';">Add Photo</button>
+          </form>
+        </div>
+      </td>
+      <td></td>
+      <td></td>
+      <td>
+        <div class="form-area">
+          <h3> Update Photo </h3>
+          <form #photoForm1="ngForm" (ngSubmit)="photoService.updatePhoto(photoForm1.value)">
+            PhotoId:      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="id" ngModel /> <br /><br />
+            AlbumId:      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="albumId" ngModel /> <br /><br />
+            Created By:   &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="createdBy" ngModel /> <br /><br />
+            Date Created: <input type="date" id="start" name="dateCreated" value="2018-07-22" min="2018-01-01" max="2050-12-31" ngModel /> <br /><br />
+            PhotoUrl:      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="photoUrl" ngModel /> <br /><br />
+            <!--<button type="submit" (ngSubmit)="photoService.addPhoto(photoForm.value)" onclick="window.location.href = '/photo';">Add Photo</button>-->
+            <button type="submit">Update Photo</button>
+          </form>
+          </div>
+      </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<button onclick="window.location.href = '/album';">GoBack to Album</button>
+<br />
+

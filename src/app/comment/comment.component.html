@@ -1,0 +1,19 @@
+<button type="submit" (click)="getCommentsByPhotoId()">View Comments</button>
+<div *ngIf="isAvailable1">
+  <div class="row">
+    <div class="card" style="width: 18rem;">
+      <div style="text-align:right">
+        <button type="submit" (click)="sortComments(commentsList)" style="width: 100px; height: 30px; font-size: 10px;">Change order</button>
+      </div>
+      <div class="card-body" *ngFor="let comments of commentsList ">
+        <p class="card-title">{{comments.id}}</p>
+        <p class="card-text" style="font-size: 10px">{{comments.dateCreated}}</p>
+        <p class="card-text" style="text-align: center; font-size: 30px">{{comments.message}}</p>
+        <div class="card-text" style="text-align:right">
+          <a href="mailto:comments.createdBy" style="text-align: right; font-size: 15px">{{comments.createdBy}}</a>
+          <!--<a href="">{{comments.createdBy}}</a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

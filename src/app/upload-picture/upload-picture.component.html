@@ -1,0 +1,14 @@
+<p>upload-picture works!</p>
+
+{{ albumId }}
+
+<p>Click on the "Choose File" button to upload a file:</p>
+
+  Name: <input type="text" [(ngModel)]="albumTitle" />
+  <form (ngSubmit)="submit()">
+    <input type="file" id="myFile" name="filename" [disabled]="!albumTitle" (change)=createAlbum($event)>
+    <button type="submit" >Submit</button>
+    <img [src]="filename" />
+  </form> <br />
+
+  <a [routerLink]="['/album', albumId]" class="btn btn-primary">Go to Album</a>

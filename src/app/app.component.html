@@ -1,0 +1,31 @@
+<router-outlet>
+  <!--<img src="https://www.pcclean.io/wp-content/uploads/2020/4/qemYZb.jpg" style="height: 100%; background-position: initial; background-repeat: no-repeat; background-size: contain;" />-->
+  <h1>My Photo Application</h1>
+  <nav class="navbar navbar-light bg-light active" style="background-color: #397A9A; font-size: 30px">
+    <!--<span class="navbar-brand mb-0" routerLink="/login" *ngIf="isLogIn" routerLinkActive="active" ariaCurrentWhenActive="page">Login</span>-->
+    <!-- <app-login ></app-login>-->
+    <span class="navbar-brand mb-0" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</span>
+    &nbsp;&nbsp;&nbsp;<span class="navbar-brand mb-0" routerLink="/profile" routerLinkActive="active" ariaCurrentWhenActive="page">Profile</span>
+    &nbsp;&nbsp;&nbsp;<span class="navbar-brand mb-0" routerLink="/albums" routerLinkActive="active" ariaCurrentWhenActive="page">All-Albums</span>
+    &nbsp;&nbsp;&nbsp;<span class="navbar-brand mb-0" routerLink="/create" routerLinkActive="active" ariaCurrentWhenActive="page">Create</span>
+    &nbsp;&nbsp;&nbsp;<span class="navbar-brand mb-0" routerLink="/album" routerLinkActive="active" ariaCurrentWhenActive="page">My-Album</span>
+    &nbsp;&nbsp;&nbsp;<span class="navbar-brand mb-0" routerLink="/upload" routerLinkActive="active" ariaCurrentWhenActive="page">Upload</span>
+    &nbsp;&nbsp;&nbsp;<span class="navbar-brand mb-0" routerLink="/photo" routerLinkActive="active" ariaCurrentWhenActive="page">All Photos</span>
+    &nbsp;&nbsp;&nbsp;<span class="navbar-brand mb-0" routerLink="/myPhoto" routerLinkActive="active" ariaCurrentWhenActive="page">Photo Details</span>
+    &nbsp;&nbsp;&nbsp;<span class="navbar-brand mb-0" routerLink="/allcomments" routerLinkActive="active" ariaCurrentWhenActive="page">All-Comments</span>
+    &nbsp;&nbsp;&nbsp;<button class="btn btn-lg btn-primary btn-block" *ngIf=userService.isLoggedIn (click)="userService.logoutUser()" style="height:100px; width:100px">Logout</button>
+  </nav>
+  <hr />
+  <div *ngFor="let message of messageService.messages">
+    <div class="alert alert-danger" role="alert">
+      {{message}}
+    </div>
+  </div>
+  <div *ngIf ="messageService.messages.length > 0">
+    <button type="button" class="btn btn-info" (click) ="messageService.clearMessages()">Clear</button>
+  </div>
+</router-outlet>
+<body style="background-image: url(https://www.pcclean.io/wp-content/uploads/2020/4/qemYZb.jpg); height: 100%; background-position: initial; background-repeat: no-repeat; background-size: contain;">
+  <!--<img src="https://www.pcclean.io/wp-content/uploads/2020/4/qemYZb.jpg" style="height: 100%; background-position: initial; background-repeat: no-repeat; background-size: contain;" />-->
+</body>
+<!--<button class="btn btn-lg btn-primary btn-block" *ngIf=userService.loginUser($event) (click)=userService.logoutUser($event)>Logout</button>-->
